@@ -5,11 +5,9 @@ import 'express-async-errors';
 
 const app = express();
 
-app.use(express.json());
-
-app  
-  .use(carsRouter);
-
-app.use(errorHandler);
+app
+  .use(express.json())
+  .use(carsRouter)
+  .use(errorHandler);
 
 export default app;

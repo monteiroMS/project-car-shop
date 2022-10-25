@@ -9,8 +9,8 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async create(obj: T) {
-    const { id } = await this._model.create({ ...obj });
-    return { _id: id, ...obj };
+    const result = await this._model.create({ ...obj });
+    return result;
   }
 
   public async readOne(_id: string) {
