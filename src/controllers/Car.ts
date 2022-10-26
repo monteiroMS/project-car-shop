@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { ICar } from '../interfaces/ICar';
 import { IService } from '../interfaces/IService';
 import CarModel from '../models/Car';
-import CarService from '../services/Car';
+import CarService, { ICarWithId } from '../services/Car';
 
 export default class CarController {
   constructor(
@@ -11,7 +11,11 @@ export default class CarController {
 
   public async create(req: Request, res: Response) {
     const result = await this._service.create(req.body);
-    return res.status(201).json(result);
+    if (result) {
+      const { _id: id } = result as ICarWithId;
+      const car = await this._service.getById(id);
+      return res.status(201).json(car);
+    }
   }
 
   public async getAll(_req: Request, res: Response) {

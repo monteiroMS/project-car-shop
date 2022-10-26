@@ -2,6 +2,8 @@ import { ICar } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
 
+export interface ICarWithId extends ICar { _id: string }
+
 export default class CarService implements IService<ICar> {
   constructor(
     protected _model: IModel<ICar>,
@@ -9,7 +11,7 @@ export default class CarService implements IService<ICar> {
 
   public async create(obj: ICar) {
     const result = await this._model.create(obj);
-    return result;
+    return result as ICarWithId;
   }
 
   public async getAll() {
