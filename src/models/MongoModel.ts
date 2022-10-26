@@ -1,7 +1,7 @@
 import { Model, UpdateQuery } from 'mongoose';
 import { IModel } from '../interfaces/IModel';
 
-abstract class MongoModel<T> implements IModel<T> {
+class MongoModel<T> implements IModel<T> {
   protected _model: Model<T>;
 
   constructor(model: Model<T>) {
@@ -14,12 +14,12 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(_id: string) {
-    const result = await this._model.findOne({ _id }).select('-__v');
+    const result = await this._model.findOne({ _id });
     return result;
   }
 
   public async read() {
-    const result = await this._model.find({}).select('-__v');
+    const result = await this._model.find({});
     return result;
   }
 
@@ -28,7 +28,7 @@ abstract class MongoModel<T> implements IModel<T> {
       { _id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
-    ).select('-__v');
+    );
     return result;
   }
 

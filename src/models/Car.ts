@@ -2,7 +2,7 @@ import { model as mongooseCreateModel, Schema } from 'mongoose';
 import { ICar } from '../interfaces/ICar';
 import MongoModel from './MongoModel';
 
-const carSchema = new Schema<ICar>({
+export const carSchema = new Schema<ICar>({
   model: {
     type: String,
     required: true,
@@ -27,7 +27,7 @@ const carSchema = new Schema<ICar>({
     type: Number,
     required: true,
   },
-});
+}, { versionKey: false });
 
 export default class CarModel extends MongoModel<ICar> {
   constructor(
