@@ -16,4 +16,9 @@ export default class CarService implements IService<ICar> {
     const cars = await this._model.read();
     return cars;
   }
+
+  public async getById(id: string) {
+    const car = await this._model.readOne(id);
+    return car;
+  } 
 }
