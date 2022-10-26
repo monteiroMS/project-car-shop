@@ -18,7 +18,7 @@ describe('Testa "CarController"', () => {
   before(async () => {
     sinon
       .stub(carService, 'create')
-      .resolves(CAR_MODEL_RETURN);
+      .resolves(CAR_MODEL_RETURN as any);
     
     sinon
       .stub(carService, 'getAll')
@@ -51,10 +51,10 @@ describe('Testa "CarController"', () => {
     expect((res.json as sinon.SinonStub).calledWith(CARS_MODEL_RETURN)).to.be.true;
   });
 
-  it('O método "getAll" retorna todos os carros no bando de dados, com um status 200', async () => {
+  it('O método "getById" retorna o carro relacionado ao "id" da rota, com um status 200', async () => {
     const { _id: { $oid: id } } = CAR_MODEL_RETURN;
     req.params = { id };
-    await carController.getAll(req, res);
+    await carController.getById(req, res);
 
     expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
     expect((res.json as sinon.SinonStub).calledWith(CAR_MODEL_RETURN)).to.be.true;
