@@ -14,21 +14,22 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(_id: string) {
-    const result = await this._model.findOne({ _id });
+    const result = await this._model.findOne({ _id }).select('-__v');
     return result;
   }
 
   public async read() {
-    const result = await this._model.find({});
+    const result = await this._model.find({}).select('-__v');
     return result;
   }
 
   public async update(_id: string, obj: T) {
-    await this._model.updateOne(
+    const result = await this._model.findOneAndUpdate(
       { _id },
       { ...obj } as UpdateQuery<T>,
-    );
-    return null;
+      { new: true },
+    ).select('-__v');
+    return result;
   }
 
   public async delete(_id: string) {
