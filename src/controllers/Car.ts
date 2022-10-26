@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { ICar } from '../interfaces/ICar';
 import { IService } from '../interfaces/IService';
+import CarModel from '../models/Car';
+import CarService from '../services/Car';
 
 export default class CarController {
   constructor(
@@ -23,3 +25,9 @@ export default class CarController {
     return res.status(200).json(car);
   }
 }
+
+export const startNewCarController = () => {
+  const model = new CarModel();
+  const service = new CarService(model);
+  return new CarController(service);
+};
