@@ -10,3 +10,12 @@ export const CAR_MODEL_RETURN = {
   doorsQty: 2,
   __v: 0
 };
+
+export const CAR_CREATE_MOCK = {
+  model: 'Ferrari Maranello',
+  year: 1963,
+  color: 'red',
+  buyValue: 3500000,
+  seatsQty: 2,
+  doorsQty: 2,
+};

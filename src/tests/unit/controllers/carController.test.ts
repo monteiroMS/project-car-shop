@@ -4,7 +4,7 @@ import CarModel from '../../../models/Car';
 import CarService from '../../../services/Car';
 import CarController from '../../../controllers/Car';
 import { Request, Response } from 'express';
-import { CAR_MODEL_RETURN } from '../mocks/carMock';
+import { CAR_CREATE_MOCK, CAR_MODEL_RETURN } from '../mocks/carMock';
 const { expect } = chai;
 
 describe('Testa "CarController"', () => {
@@ -29,7 +29,7 @@ describe('Testa "CarController"', () => {
   })
 
   it('Recebendo todos os itens necessários na requisição, deve retornar o carro criado com um status 201', async () => {
-    req.body = CAR_MODEL_RETURN;
+    req.body = CAR_CREATE_MOCK;
     await carController.create(req, res);
 
     expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
