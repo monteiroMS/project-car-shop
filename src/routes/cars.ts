@@ -30,6 +30,11 @@ router
     validateGetCarById,
     validateCreateCar,
     (req, res) => controller.updateById(req, res),
+  )
+  .delete(
+    BY_ID_URL,
+    validateGetCarById,
+    (req, res) => controller.deleteById(req, res),
   );
 
 export default router;

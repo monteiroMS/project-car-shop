@@ -56,4 +56,10 @@ describe('Testa "MongoModel"', () => {
     // const result = await carModel.readOne(id);
     // expect(result).to.be.deep.equal(CAR_MODEL_RETURN);
   });
+
+  it('A classe possui o método "delete"', async () => {
+    // const { _id: { $oid: id } } = CAR_MODEL_RETURN;
+    // const result = await carModel.readOne(id);
+    // expect(result).to.be.deep.equal(CAR_MODEL_RETURN);
+  });
 });

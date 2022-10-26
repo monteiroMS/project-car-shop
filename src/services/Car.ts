@@ -28,4 +28,8 @@ export default class CarService implements IService<ICar> {
     const car = await this._model.update(id, obj);
     return car;
   }
+
+  public async deleteById(id: string) {
+    await this._model.delete(id);
+  }
 }

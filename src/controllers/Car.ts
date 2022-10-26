@@ -34,6 +34,12 @@ export default class CarController {
     const car = await this._service.updateById(id, req.body);
     return res.status(200).json(car);
   }
+
+  public async deleteById(req: Request, res: Response) {
+    const { id } = req.params;
+    await this._service.deleteById(id);
+    return res.status(204).end();
+  }
 }
 
 export const startNewCarController = () => {

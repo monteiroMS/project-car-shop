@@ -3,4 +3,5 @@ export interface IService<T> {
   getAll(): Promise<T[]>;
   getById(id: string): Promise<T | null>;
   updateById(id: string, obj: T): Promise<T | null>;
+  deleteById(id: string): Promise<void>;
 }
