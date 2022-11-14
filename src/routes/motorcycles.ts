@@ -29,6 +29,11 @@ router
     validateGetMotorcycleById,
     validateMotorcycle,
     (req, res) => controller.updateById(req, res),
+  )
+  .delete(
+    `${BASE_URL}/:id`,
+    validateGetMotorcycleById,
+    (req, res) => controller.deleteById(req, res),
   );
 
 export default router;
