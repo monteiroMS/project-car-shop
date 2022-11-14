@@ -3,7 +3,7 @@ import { IVehicle, vehicleZodSchema } from './IVehicle';
 
 export const motorcycleZodSchema = vehicleZodSchema.extend({
   category: z.string().regex(/Street|Custom|Trail/),
-  engineCapacity: z.number().max(2500),
+  engineCapacity: z.number().min(1).max(2500),
 });
 
 export interface IMotorcycle extends IVehicle {
