@@ -23,6 +23,12 @@ router
     `${BASE_URL}/:id`,
     validateGetMotorcycleById,
     (req, res) => controller.getById(req, res),
+  )
+  .put(
+    `${BASE_URL}/:id`,
+    validateGetMotorcycleById,
+    validateMotorcycle,
+    (req, res) => controller.updateById(req, res),
   );
 
 export default router;
