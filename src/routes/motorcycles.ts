@@ -13,6 +13,10 @@ router
     BASE_URL,
     validateMotorcycle,
     (req, res) => controller.create(req, res),
+  )
+  .get(
+    BASE_URL,
+    (req, res) => controller.getAll(req, res),
   );
 
 export default router;
