@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { startNewMotorcycleController } from '../controllers/Motorcycle';
 import validateMotorcycle from '../middlewares/validateCreateMotorcycle';
+import validateGetMotorcycleById from '../middlewares/validateGetMotorcycleById';
 
 const router = express.Router();
 
@@ -17,6 +18,11 @@ router
   .get(
     BASE_URL,
     (req, res) => controller.getAll(req, res),
+  )
+  .get(
+    `${BASE_URL}/:id`,
+    validateGetMotorcycleById,
+    (req, res) => controller.getById(req, res),
   );
 
 export default router;
